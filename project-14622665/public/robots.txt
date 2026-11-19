@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /auth
+Disallow: /admin
+Disallow: /thanh-toan
+Disallow: /my-profile
+Disallow: /thiet-ke-vong
+Disallow: /explore
+Sitemap: https://themysticrooms.com/sitemap.xml

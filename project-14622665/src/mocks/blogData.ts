@@ -1,0 +1,58 @@
+export const blogPosts = [
+  {
+    id: 'so-duong-doi-than-so-hoc',
+    title: 'Cách Tính Số Đường Đời Trong Thần Số Học',
+    category: 'Numerology',
+    excerpt: 'Số đường đời là một trong những chỉ số quan trọng nhất trong thần số học, hé lộ mục đích và bài học cốt lõi của cuộc đời bạn.',
+    image: 'https://readdy.ai/api/search-image?query=Golden%20glowing%20numbers%20and%20sacred%20geometry%20floating%20in%20dark%20cosmic%20space%20with%20purple%20nebula%20and%20stardust%2C%20mystical%20numerology%20symbols%2C%20ethereal%20artistic%20illustration&width=800&height=450&seq=blog-numerology&orientation=landscape',
+    date: '20/08/2024',
+    readTime: '6 phút đọc',
+  },
+  {
+    id: 'hieu-ve-sun-moon-rising-sign',
+    title: 'Hiểu Về Sun Sign, Moon Sign Và Rising Sign',
+    category: 'Chiêm Tinh',
+    excerpt: 'Ba dấu hiệu quan trọng này tạo nên bộ ba cốt lõi trong bản đồ sao, định hình tính cách, cảm xúc và ấn tượng đầu tiên của bạn.',
+    image: 'https://readdy.ai/api/search-image?query=Gothic%20window%20framing%20glowing%20full%20moon%20with%20zodiac%20constellations%20and%20planets%20in%20dark%20starry%20sky%2C%20purple%20and%20gold%20celestial%20light%2C%20mystical%20atmospheric%20illustration&width=800&height=450&seq=blog-astrology&orientation=landscape',
+    date: '15/08/2024',
+    readTime: '8 phút đọc',
+  },
+  {
+    id: 'tarot-cho-nguoi-moi',
+    title: 'Tarot Cho Người Mới Bắt Đầu: Hành Trình Phản Tư',
+    category: 'Tarot',
+    excerpt: 'Tarot không chỉ là bói toán. Đó là công cụ phản tư mạnh mẽ giúp bạn suy ngẫm về cảm xúc, suy nghĩ và những lựa chọn trong cuộc sống.',
+    image: 'https://readdy.ai/api/search-image?query=Tarot%20cards%20spread%20on%20dark%20velvet%20table%20with%20golden%20candlelight%20and%20crystal%20ball%20glowing%20purple%2C%20mystical%20atmosphere%20with%20star%20patterns%2C%20artistic%20illustration&width=800&height=450&seq=blog-tarot&orientation=landscape',
+    date: '10/08/2024',
+    readTime: '5 phút đọc',
+  },
+  {
+    id: '16-loai-tinh-cach-mbti',
+    title: 'Khám Phá 16 Loại Tính Cách MBTI',
+    category: 'Tính Cách',
+    excerpt: 'Mô hình MBTI chia con người thành 16 loại tính cách dựa trên 4 cặp đối lập. Hiểu về loại tính cách của mình giúp bạn phát triển bản thân tốt hơn.',
+    image: 'https://readdy.ai/api/search-image?query=Ornate%20antique%20golden%20mirror%20reflecting%20mystical%20purple%20celestial%20light%20with%20stars%20and%20constellations%2C%20dark%20ethereal%20atmosphere%20with%20crystal%20glow%2C%20artistic%20illustration&width=800&height=450&seq=blog-mbti&orientation=landscape',
+    date: '05/08/2024',
+    readTime: '7 phút đọc',
+  },
+  {
+    id: 'chon-da-phong-thuy',
+    title: 'Cách Chọn Đá Phong Thủy Phù Hợp Với Bạn',
+    category: 'Đá Năng Lượng',
+    excerpt: 'Mỗi loại đá mang một nguồn năng lượng riêng. Tìm hiểu cách chọn loại đá phù hợp với tính cách và nhu cầu năng lượng của bạn.',
+    image: 'https://readdy.ai/api/search-image?query=Beautiful%20crystal%20stones%20collection%20with%20amethyst%20moonstone%20and%20rose%20quartz%20on%20dark%20velvet%20surface%2C%20purple%20mystical%20glow%20and%20golden%20accents%2C%20product%20photography&width=800&height=450&seq=blog-crystal&orientation=landscape',
+    date: '01/08/2024',
+    readTime: '6 phút đọc',
+  },
+  {
+    id: 'hanh-trinh-kham-pha-ban-than',
+    title: 'Bắt Đầu Hành Trình Khám Phá Bản Thân',
+    category: 'Self-Discovery',
+    excerpt: 'Self-discovery là hành trình dài suốt cuộc đời. Khám phá cách kết nối nhiều lối đi insight khác nhau để thấu hiểu bản thân sâu sắc hơn.',
+    image: 'https://readdy.ai/api/search-image?query=Mystical%20cloaked%20figure%20standing%20on%20mountain%20peak%20under%20starry%20night%20sky%20with%20crescent%20moon%20and%20aurora%20purple%20glow%2C%20holding%20lantern%2C%20dark%20ethereal%20atmosphere&width=800&height=450&seq=blog-discovery&orientation=landscape',
+    date: '28/07/2024',
+    readTime: '9 phút đọc',
+  },
+];
+
+export const blogCategories = ['Tất Cả', 'Numerology', 'Chiêm Tinh', 'Tarot', 'Tính Cách', 'Đá Năng Lượng', 'Self-Discovery'];

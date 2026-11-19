@@ -1,0 +1,619 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mystic-dark: #150a2e;
+  --mystic-deeper: #0e0722;
+  --mystic-purple: #8b5cf6;
+  --mystic-gold: #d4af37;
+  --mystic-gold-light: #f0d878;
+  --mystic-purple-glow: rgba(139, 92, 246, 0.4);
+  --mystic-gold-glow: rgba(212, 175, 55, 0.3);
+  /* Bộ font dùng chung toàn site: ưu tiên Be Vietnam Pro (hỗ trợ đầy đủ dấu
+     tiếng Việt), fallback sang các font hệ thống cũng có dấu tiếng Việt để
+     chữ không bao giờ bị lỗi hiển thị các ký tự như "ã ỡ ợ ộ ử" khi font web
+     chưa tải kịp. */
+  --font-body: 'Be Vietnam Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Be Vietnam Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-label: 'Be Vietnam Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-brand: 'Cinzel', 'Be Vietnam Pro', Georgia, serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--mystic-dark);
+    color: #e2d5f5;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: rgba(139, 92, 246, 0.3);
+    color: #fff;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--mystic-deeper);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8b5cf6, #a78bfa);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .mystic-card {
+    background: rgba(22, 15, 40, 0.82);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px;
+    transition: border-color 0.3s ease;
+  }
+  .mystic-card:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+  /* Khung phân tích bản đồ sao: nền tím sáng nổi bật hơn hẳn nền trang
+     (vốn là tím đậm gần đen) để nội dung tách bạch và dễ đọc. */
+  .analysis-panel {
+    background:
+      radial-gradient(120% 130% at 0% 0%, rgba(167, 139, 250, 0.28) 0%, transparent 58%),
+      radial-gradient(90% 90% at 100% 100%, rgba(212, 175, 55, 0.18) 0%, transparent 60%),
+      linear-gradient(160deg, rgba(78, 51, 134, 0.94) 0%, rgba(37, 22, 70, 0.97) 100%);
+    border: 1px solid rgba(196, 168, 255, 0.55);
+    box-shadow: inset 0 1px 0 rgba(196, 168, 255, 0.18);
+  }
+  .analysis-tile {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(140% 120% at 50% 0%, rgba(196, 168, 255, 0.26) 0%, transparent 64%),
+      linear-gradient(160deg, rgba(96, 65, 162, 0.88) 0%, rgba(51, 32, 96, 0.94) 100%);
+    border: 1px solid rgba(200, 172, 255, 0.5);
+    box-shadow: inset 0 1px 0 rgba(196, 168, 255, 0.16);
+  }
+  .analysis-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 14%;
+    right: 14%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240, 216, 120, 0.85), transparent);
+  }
+  /* Tăng độ tương phản chữ bên trong các khung phân tích để không bị chìm */
+  .analysis-panel .mystic-text,
+  .analysis-panel .mystic-subheading,
+  .analysis-tile .mystic-text,
+  .analysis-tile .mystic-subheading {
+    color: #efe7fd;
+    opacity: 1;
+  }
+  .analysis-panel .text-mystic-purple-300\/60,
+  .analysis-tile .text-mystic-purple-300\/60 {
+    color: rgba(232, 222, 252, 0.88);
+  }
+  .mystic-btn-primary {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    color: #fff;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .mystic-btn-primary:hover {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+  }
+  .mystic-btn-outline {
+    background: transparent;
+    color: #c4a8ff;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .mystic-btn-outline:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.6);
+    color: #fff;
+  }
+  .mystic-btn-gold {
+    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+    color: #0a0618;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .mystic-btn-gold:hover {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+  }
+  .mystic-heading {
+    font-family: var(--font-heading);
+    color: #f0d878;
+    letter-spacing: 0.05em;
+  }
+  .mystic-brand {
+    font-family: var(--font-brand);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #f0d878;
+  }
+  .mystic-subheading {
+    font-family: var(--font-body);
+    color: #c4a8ff;
+    font-weight: 400;
+  }
+  .mystic-text {
+    font-family: var(--font-body);
+    color: #c8b8e0;
+    line-height: 1.7;
+  }
+  .mystic-gold-text {
+    color: #f0d878;
+  }
+  .mystic-purple-text {
+    color: #c4a8ff;
+  }
+  .mystic-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), rgba(212, 175, 55, 0.3), rgba(139, 92, 246, 0.4), transparent);
+  }
+  .star-bg {
+    position: relative;
+  }
+  .star-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, rgba(196, 168, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(212, 175, 55, 0.3), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(196, 168, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(212, 175, 55, 0.2), transparent),
+      radial-gradient(1px 1px at 160px 20px, rgba(196, 168, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 200px 100px, rgba(212, 175, 55, 0.3), transparent),
+      radial-gradient(1px 1px at 250px 50px, rgba(196, 168, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 300px 80px, rgba(212, 175, 55, 0.2), transparent);
+    background-size: 350px 150px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+  }
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  /* ===== Gold Sparkle Highlighted Value ===== */
+  .gold-value {
+    display: inline-block;
+    background: linear-gradient(90deg, #f0d878, #d4af37, #ffedb0, #d4af37, #f0d878);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .bg-mystic-gradient {
+    background: transparent;
+  }
+  .bg-mystic-radial {
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  }
+  .bg-gold-radial {
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  }
+
+  /* ===== Animated Starfield Background ===== */
+  .starfield-bg {
+    position: relative;
+  }
+  .starfield-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 15px 25px, rgba(240, 216, 120, 0.7), transparent),
+      radial-gradient(1px 1px at 55px 65px, rgba(196, 168, 255, 0.5), transparent),
+      radial-gradient(2px 2px at 85px 35px, rgba(240, 216, 120, 0.6), transparent),
+      radial-gradient(1px 1px at 125px 85px, rgba(196, 168, 255, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 155px 15px, rgba(240, 216, 120, 0.5), transparent),
+      radial-gradient(1px 1px at 195px 105px, rgba(196, 168, 255, 0.5), transparent),
+      radial-gradient(2px 2px at 245px 45px, rgba(240, 216, 120, 0.4), transparent),
+      radial-gradient(1px 1px at 285px 75px, rgba(196, 168, 255, 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 35px 115px, rgba(240, 216, 120, 0.5), transparent),
+      radial-gradient(1px 1px at 75px 145px, rgba(196, 168, 255, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 115px 165px, rgba(240, 216, 120, 0.3), transparent),
+      radial-gradient(1px 1px at 165px 125px, rgba(196, 168, 255, 0.5), transparent),
+      radial-gradient(2px 2px at 205px 185px, rgba(240, 216, 120, 0.4), transparent),
+      radial-gradient(1px 1px at 255px 155px, rgba(196, 168, 255, 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 295px 195px, rgba(240, 216, 120, 0.5), transparent),
+      radial-gradient(1px 1px at 325px 45px, rgba(196, 168, 255, 0.4), transparent);
+    background-size: 380px 220px;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  .starfield-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 65px 15px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 135px 95px, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 205px 35px, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(2px 2px at 275px 125px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 345px 75px, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 45px 175px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 115px 205px, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(1.5px 1.5px at 185px 155px, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 420px 260px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* ===== Twinkling Stars ===== */
+  .twinkle-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(240, 216, 120, 0.8);
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+
+  /* ===== Nebula / Aurora Background ===== */
+  .nebula-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .nebula-bg .nebula-1 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+    animation: nebulaFloat 20s ease-in-out infinite;
+  }
+  .nebula-bg .nebula-2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    bottom: -15%;
+    right: -10%;
+    animation: nebulaFloat 25s ease-in-out infinite reverse;
+  }
+  .nebula-bg .nebula-3 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 130, 255, 0.12) 0%, transparent 70%);
+    top: 40%;
+    left: 60%;
+    animation: nebulaFloat 18s ease-in-out infinite;
+  }
+  @keyframes nebulaFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+  }
+
+  /* ===== Constellation Lines ===== */
+  .constellation-line {
+    stroke: rgba(196, 168, 255, 0.15);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+    animation: dashFlow 8s linear infinite;
+  }
+  @keyframes dashFlow {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 32; }
+  }
+
+  /* ===== Tagline (static gold, không còn hiệu ứng chạy chữ) ===== */
+  .tagline-glow {
+    color: #f0d878;
+  }
+
+  /* ===== House Line Animation ===== */
+  .house-line {
+    stroke: rgba(196, 168, 255, 0.2);
+    stroke-width: 1;
+    animation: houseLineFade 2s ease-in-out forwards;
+  }
+  @keyframes houseLineFade {
+    from { opacity: 0; stroke-dashoffset: 100; }
+    to { opacity: 1; stroke-dashoffset: 0; }
+  }
+}
+
+/* ================= Rich Mystic Background ================= */
+.mystic-canvas {
+  background:
+    radial-gradient(120% 100% at 12% 8%, rgba(90, 42, 150, 0.92) 0%, transparent 55%),
+    radial-gradient(110% 100% at 88% 14%, rgba(124, 54, 168, 0.85) 0%, transparent 55%),
+    radial-gradient(100% 90% at 50% 112%, rgba(150, 46, 120, 0.72) 0%, transparent 60%),
+    radial-gradient(90% 90% at 30% 55%, rgba(72, 26, 132, 0.6) 0%, transparent 55%),
+    radial-gradient(80% 70% at 72% 30%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
+    linear-gradient(160deg, #120820 0%, #1b0b36 26%, #271050 52%, #180a3c 78%, #0f071c 100%);
+}
+.mystic-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(44px);
+  animation: nebulaFloat 25s ease-in-out infinite;
+}
+.mystic-fog {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(52px);
+  animation: fogDrift 28s ease-in-out infinite;
+}
+.mystic-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation-name: particleTwinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.mystic-rune {
+  position: absolute;
+  color: rgba(196, 168, 255, 0.5);
+  line-height: 1;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+  animation-name: runeFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.mystic-crystal {
+  position: absolute;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, rgba(196, 168, 255, 0.6), rgba(139, 92, 246, 0.12));
+  border: 1px solid rgba(196, 168, 255, 0.35);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.5);
+  animation-name: crystalFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.mystic-trail {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.55), rgba(139, 92, 246, 0.55), transparent);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.35);
+  animation-name: trailFlow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* ===== Newsletter popup honeypot (ẩn khỏi người dùng thật) ===== */
+.newsletter-hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+@keyframes fogDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, -30px) scale(1.1); }
+  66% { transform: translate(-40px, 25px) scale(0.95); }
+}
+@keyframes particleTwinkle {
+  0%, 100% { opacity: 0.12; transform: translateY(0) scale(0.6); }
+  50% { opacity: 0.95; transform: translateY(-10px) scale(1.35); }
+}
+@keyframes runeFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.14; }
+  50% { transform: translateY(-14px) rotate(6deg); opacity: 0.34; }
+}
+@keyframes crystalFloat {
+  0%, 100% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: rotate(45deg) translateY(-16px) scale(1.2); opacity: 1; }
+}
+@keyframes trailFlow {
+  0% { opacity: 0; transform: rotate(var(--angle, -20deg)) translateX(0); }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--angle, -20deg)) translateX(160px); }
+}
+
+/* ================= Step Transition ================= */
+.step-fade-in {
+  animation: stepFadeIn 0.5s ease-out both;
+}
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+/* ===== Tarot Card Back (clean, minimalist) ===== */
+.card-back-minimal {
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(139, 92, 246, 0.12) 0%, transparent 55%),
+    linear-gradient(160deg, #1c1340 0%, #0d0826 55%, #140d33 100%);
+}
+.card-reveal {
+  animation: cardReveal 0.5s ease-out both;
+}
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(16px) rotate(3deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+/* ===== Tarot Card 3D Flip Reveal ===== */
+.card-flip-in {
+  animation: cardFlipIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+@keyframes cardFlipIn {
+  0% { transform: perspective(1200px) rotateY(180deg); opacity: 0; }
+  45% { opacity: 1; }
+  100% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+}
+
+/* ===== Tarot Shuffle (xào bài) ===== */
+/* Thẻ bài bay tản ra hai bên rồi thu về giữa, tạo cảm giác đang xào trộn. */
+.shuffle-card {
+  animation: cardScatter 1s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes cardScatter {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(0.96); }
+  20%  { transform: translate(-52px, -8px) rotate(-10deg) scale(1); }
+  45%  { transform: translate(6px, 12px) rotate(5deg) scale(1.02); }
+  70%  { transform: translate(52px, -8px) rotate(10deg) scale(1); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(0.96); }
+}
+/* Thẻ bài lắc nhẹ khi sẵn sàng bốc để mời gọi người dùng. */
+.deck-ready .card-reveal {
+  animation: cardReveal 0.5s ease-out both, deckBreath 3.4s ease-in-out infinite 0.6s;
+}
+@keyframes deckBreath {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+}
+
+/* ================= Mystic Navbar ================= */
+.mystic-navbar {
+  background: linear-gradient(90deg, rgba(76, 29, 149, 0.6) 0%, rgba(91, 33, 182, 0.5) 30%, rgba(49, 46, 129, 0.45) 62%, rgba(30, 64, 118, 0.42) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.28);
+  box-shadow: 0 0 22px rgba(139, 92, 246, 0.16), 0 0 30px rgba(96, 165, 250, 0.1);
+}
+.mystic-navbar-scrolled {
+  background: linear-gradient(90deg, rgba(76, 29, 149, 0.84) 0%, rgba(91, 33, 182, 0.74) 30%, rgba(49, 46, 129, 0.7) 62%, rgba(30, 64, 118, 0.66) 100%);
+  box-shadow: 0 0 28px rgba(139, 92, 246, 0.3), 0 0 42px rgba(96, 165, 250, 0.18);
+}
+
+/* ===== No visible scrollbar (vertical time wheel) ===== */
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ================= Floating Hero Icons ================= */
+.hero-float {
+  position: absolute;
+  line-height: 1;
+  pointer-events: none;
+  animation: heroFloat 6s ease-in-out infinite;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.45);
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.45; }
+  50% { transform: translateY(-18px) rotate(8deg); opacity: 1; }
+}
+
+/* ===== Save Confirmation Modal ===== */
+.modal-backdrop {
+  animation: modalBackdropIn 0.25s ease-out both;
+}
+@keyframes modalBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.modal-pop {
+  animation: modalPopIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes modalPopIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ================= Blog Article =================
+   Toàn bộ style bài viết + khung "trang giấy" được tách sang
+   src/styles/article.css và chỉ nạp ở trang blog/admin (lazy CSS),
+   nên không còn nằm trong gói CSS chặn lần hiển thị đầu tiên. */
+
+/* ================= Bracelet Preview (SVG beads + charm) ================= */
+.charm-sway {
+  animation: charmSway 4.6s ease-in-out infinite;
+}
+@keyframes charmSway {
+  0%, 100% { transform: rotate(-2.6deg); }
+  50% { transform: rotate(2.6deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .charm-sway { animation: none; }
+}
+
+/* ===== Giảm hiệu ứng nền khi người dùng chọn giảm chuyển động ===== */
+@media (prefers-reduced-motion: reduce) {
+  .mystic-nebula,
+  .mystic-fog,
+  .mystic-particle,
+  .mystic-rune,
+  .mystic-crystal,
+  .mystic-trail,
+  .nebula-bg .nebula-1,
+  .nebula-bg .nebula-2,
+  .nebula-bg .nebula-3,
+  .twinkle-star,
+  .hero-float,
+  .constellation-line,
+  .step-fade-in,
+  .card-reveal,
+  .card-flip-in,
+  .shuffle-card,
+  .deck-ready .card-reveal,
+  .modal-backdrop,
+  .modal-pop {
+    animation: none !important;
+  }
+}
